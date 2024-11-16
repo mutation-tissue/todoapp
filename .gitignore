@@ -1,6 +1,6 @@
 # Python関連
 __pycache__/
-__pycache__/__pycache__/          # Pythonのキャッシュディレクトリ
+app/__pycache__/          # Pythonのキャッシュディレクトリ
 *.pyc                 # コンパイル済みPythonファイル
 *.pyo
 *.pyd
