@@ -1,0 +1,21 @@
+# Python関連
+__pycache__/          # Pythonのキャッシュディレクトリ
+*.pyc                 # コンパイル済みPythonファイル
+*.pyo
+*.pyd
+
+# Virtual Environment（仮想環境）
+venv/                 # 仮想環境ディレクトリ
+instance/
+# 環境設定
+.env                  # 環境変数ファイル
+
+# OS固有ファイル
+.DS_Store             # macOS
+Thumbs.db             # Windows
+
+# IDE設定
+.vscode/              # Visual Studio Codeの設定
+.idea/                # IntelliJやPyCharmの設定
+*.suo                 # Visual Studioの一時ファイル
+*.log                 # ログファイル

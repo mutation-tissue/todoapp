@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}ToDo Details{% endblock %}
+
+{% block content %}
+<h2>ToDo Details</h2>
+<ul>
+    <li><strong>Title:</strong> {{ todo.todo_text }}</li>
+    <li><strong>Description:</strong> {{ todo.description }}</li>
+    <li><strong>Created at:</strong> {{ todo.created_at }}</li>
+    <li><strong>Last updated:</strong> {{ todo.updated_at }}</li>
+</ul>
+
+<ul>
+    <li><a href="{{ url_for('main.todo_list') }}">Back to List</a></li>
+    <li><a href="{{ url_for('main.edit_todo', todo_id=todo.id) }}">Edit</a></li>
+    <li><a href="{{ url_for('main.todo_list', todo_id=todo.id) }}" onclick="return confirm('Are you sure?')">Delete</a></li>
+</ul>
+{% endblock %}
