@@ -10,6 +10,9 @@ venv/                 # 仮想環境ディレクトリ
 instance/
 # 環境設定
 .env                  # 環境変数ファイル
+.flaskenv             # Flask環境変数ファイル
+
+migrations/             # マイグレーションファイル
 
 # OS固有ファイル
 .DS_Store             # macOS

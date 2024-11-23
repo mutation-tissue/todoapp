@@ -78,6 +78,7 @@ def add_todo():
         )
     db.session.add(new_todo)
     db.session.commit()
+    db.session.close()  # セッションを明示的に閉じる
     return redirect(url_for('main.todo_list'))
 
 # 編集フォームの表示

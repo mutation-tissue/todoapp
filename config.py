@@ -3,9 +3,9 @@ import secrets
 
 class Config:
     SECRET_KEY = secrets.token_hex(16)
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False 
+    # データベースURIのフォーマット: dialect+driver://username:password@host:port/database
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:password@localhost/todoapp'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False  # 不要なメモリ消費を防ぐ
 
-    #SECRET_KEY = os.environ.get('SECRET_KEY') or 'a-very-secret-key'
-    #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///app.db'
-    #SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    

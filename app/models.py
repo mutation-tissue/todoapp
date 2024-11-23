@@ -2,9 +2,10 @@ from .db import db
 from flask_login import UserMixin
 
 class User(UserMixin, db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), unique=True, nullable=False)
-    password_hash = db.Column(db.String(150), nullable=False)
+    username = db.Column(db.String(50), unique=True, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
 
     def set_password(self, password):
         from werkzeug.security import generate_password_hash
@@ -15,6 +16,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
 class Todo(db.Model):
+    __tablename__ = 'todos'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     todo_text = db.Column(db.String(150), nullable=False)
