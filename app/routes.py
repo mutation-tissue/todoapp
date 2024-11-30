@@ -55,7 +55,10 @@ def register():
 @main.route('/todos')
 @login_required
 def todo_list():
-    todos = Todo.query.filter_by(user_id=current_user.id).all()
+    todos = db.session.query(Todo,User).join(User, Todo.user_id == User.id).limit(10).all()
+    print(todos)
+    for todo,user in todos:
+        print(f'{todo.id}, {user.username},{todo.todo_text}')
     return render_template('todo_list.html', todos=todos)
 
 # ToDo詳細ページ

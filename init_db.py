@@ -1,6 +1,10 @@
 from app import create_app, db
 from app.models import User  # 必要に応じて他のモデルをインポート
 
+# flask db init
+# flask db migrate
+# flask db upgrade
+
 # アプリケーションを作成
 app = create_app()
 

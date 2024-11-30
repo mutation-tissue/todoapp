@@ -17,9 +17,10 @@
 
 <!-- ToDoリストの表示 -->
 <ul>
-    {% for todo in todos %}
+    {% for todo,user in todos %}
     <li>
         {{ todo.todo_text }}
+        {{ user.username}}
         <a href="{{ url_for('main.edit_todo', todo_id=todo.id) }}">Edit</a>
         <a href="{{ url_for('main.todo_detail', todo_id=todo.id) }}" onclick="return confirm('Are you sure?')">Delete</a>
         <a href="{{ url_for('main.todo_detail', todo_id=todo.id) }}">Details</a>
