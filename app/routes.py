@@ -68,10 +68,17 @@ def todo_list():
 @main.route('/todos/<int:todo_id>')
 @login_required
 def todo_detail(todo_id):
-    todo = Todo.query.filter_by(id=todo_id).first()
-    if not todo:
+    # 指定されたIDのToDoを取得
+    todo_info = db.session.query(Todo, User).join(User, Todo.user_id == User.id).filter(Todo.id == todo_id).first()
+    if not todo_info:
         return "ToDo not found", 404
-    return render_template('todo_detail.html', todo=todo)
+    
+    todo, user_info = todo_info
+    return render_template(
+        'todo_detail.html',
+        todo=todo,
+        user_info = user_info,
+                           )
 
 # ToDo追加
 @main.route('/add_todo', methods=['POST'])

@@ -13,7 +13,9 @@
 
 <ul>
     <li><a href="{{ url_for('main.todo_list') }}">Back to List</a></li>
+    {% if current_user.username == user_info.username %}
     <li><a href="{{ url_for('main.edit_todo', todo_id=todo.id) }}">Edit</a></li>
     <li><a href="{{ url_for('main.todo_list', todo_id=todo.id) }}" onclick="return confirm('Are you sure?')">Delete</a></li>
+    {% endif %}
 </ul>
 {% endblock %}
