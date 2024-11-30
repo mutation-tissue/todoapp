@@ -31,8 +31,8 @@ def logout():
     logout_user()
     return redirect(url_for('main.login'))
 
-@main.route('/register', methods=['GET', 'POST'])
-def register():
+@main.route('/signup', methods=['GET', 'POST'])
+def signup():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -40,16 +40,19 @@ def register():
         # ユーザー登録
         if User.query.filter_by(username=username).first():
             flash('Username already exists')
-            return redirect(url_for('main.register'))
+            return redirect(url_for('main.signup'))
 
+        #user 情報をDBに追加
         new_user = User(username=username)
         new_user.set_password(password)
         db.session.add(new_user)
         db.session.commit()
-        flash('Registration successful! Please log in.')
-        return redirect(url_for('main.login'))
+        flash('アカウント作成に成功しました。　ようこそ！.')
+        # 自動的にログイン
+        login_user(new_user)
+        return redirect(url_for('main.todo_list'))
 
-    return render_template('register.html')
+    return render_template('signup.html')
 
 # ToDoリストページ
 @main.route('/todos')
